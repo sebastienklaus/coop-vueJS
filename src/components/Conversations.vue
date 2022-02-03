@@ -13,13 +13,26 @@
         <footer class="card-footer">
             <a href="#" class="card-footer-item">Save</a>
             <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
+            <a :href="removeConversation()" class="card-footer-item">Delete</a>
         </footer>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['conversation']
+    props: ['conversation'],
+    methods : {
+    removeConversation(){
+      this.$api
+       .delete(`channels/${this.$route.params.id}`)
+       .then((response) => {
+        alert('Votre conversation a bien été supprimé');
+        this.$router.push('/');
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+    },
+  }
 }
 </script>
