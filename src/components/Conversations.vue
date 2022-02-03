@@ -10,29 +10,11 @@
                 {{ conversation.label }}
             </div>
         </div>
-        <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
-            <a href="#" class="card-footer-item">Edit</a>
-            <a @click="removeConversation(conversation.id)" class="card-footer-item">Delete</a>
-        </footer>
     </div>
 </template>
 
 <script>
 export default {
     props: ['conversation'],
-    methods : {
-    removeConversation($id){
-      this.$api
-       .delete(`channels/${id}`)
-       .then((response) => {
-        alert('Votre conversation a bien été supprimé');
-        this.$router.push('/');
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
-    },
-  }
 }
 </script>
