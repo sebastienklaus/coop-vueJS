@@ -36,6 +36,7 @@ export default {
         this.$api.post('channels', this.conversation)
         .then((response) => {
             console.log(response.data);
+            this.$router.push('/');
         })
         .catch((error) => {
             alert(error.response.data.message);
