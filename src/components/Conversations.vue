@@ -13,7 +13,7 @@
         <footer class="card-footer">
             <a href="#" class="card-footer-item">Save</a>
             <a href="#" class="card-footer-item">Edit</a>
-            <a :href="removeConversation(conversation.id)" class="card-footer-item">Delete</a>
+            <a @click="removeConversation(conversation.id)" class="card-footer-item">Delete</a>
         </footer>
     </div>
 </template>
