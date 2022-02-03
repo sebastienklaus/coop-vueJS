@@ -6,7 +6,8 @@
                         <div class="box" v-if="conversation">
                            <p><b>{{conversation.topic}}</b></p>
                            <p>{{conversation.label}}</p><br/>
-                              <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
+                           <a @click="removeConversation()" class="button button is-dark">Delete</a>
+                              <!-- <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link> -->
                         </div>
                         <posterMessage :conversation="conversation"/>
                         <div v-for="message in messages" :key="message.id">
@@ -45,12 +46,6 @@ export default {
              
           }
           this.conversation = response.data;
-          this.flashMessage.show({
-            status: "error",
-            title: "Something went wrong :(",
-            message: 'hello world!',
-            time: 5000,
-          });
 
        })
        .catch((error) => {
@@ -73,7 +68,18 @@ export default {
           this.$api.get(`channels/${this.$route.params.id}/posts`).then(response => {
              this.messages = response.data;
           })
-       }
+       },
+       removeConversation(){
+      this.$api
+       .delete(`channels/${this.$route.params.id}`)
+       .then((response) => {
+        alert('Votre conversation a bien été supprimé');
+        this.$router.push('/');
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+    },
     }
 }
 </script>
