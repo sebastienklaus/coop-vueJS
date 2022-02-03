@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Navigation />
     <div class="m-3" v-for="item in conversations" :key="item.id">
       <Conversation :conversation="item" />
     </div>
@@ -9,10 +9,9 @@
 
 <script>
 import Conversation from '../components/Conversations.vue';
-import Header from '../components/Header.vue';
 
 export default {
-  components: { Conversation, Header },
+  components: { Conversation },
   data(){
     return {
       conversations : []

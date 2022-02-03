@@ -26,7 +26,7 @@ const routes = [
     component: () => import('../views/CreerConversation.vue')
   },
   {
-    path: '/conversation/:idConversation',
+    path: '/conversation/:id',
     name: 'Conversation',
     component: () => import('../views/Conversation.vue')
   },

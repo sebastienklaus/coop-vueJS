@@ -1,59 +1,82 @@
 <template>
-    <div>
-    <form @submit.prevent="sendMessage">
-            <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                    <input class="input" type="text" required v-model="message.text" placeholder="Votre message ici ...">
-                </div>
-                <button class="button">Valider</button>
-            </div>
-    </form>
-
-    
-    <div class="card">
-            <div class="card-content">
-                <div class="content">
-                    <p>{{message.text}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+   <div>
+        <Header/>
+              <section class="section">
+                      <h4 class="title is-4 has-text-centered">Détail de conversation</h4>
+                        <div class="box" v-if="conversation">
+                           <p><b>{{conversation.topic}}</b></p>
+                           <p>{{conversation.label}}</p><br/>
+                              <router-link  div="box" class="button button is-dark" :to="{name : 'deleteConversation', params :{id:conversation.id}}"> delete conversation</router-link>
+                        </div>
+                        <posterMessage :conversation="conversation"/>
+                        <div v-for="message in messages" :key="message.id">
+                           <Message :message="message" />
+                        </div>
+               </section>
+         <FlashMessage></FlashMessage>
+   </div>
 </template>
 
 <script>
+import posterMessage from '../components/posterMessage.vue';
+import Message from '../components/Message.vue';
 export default {
+   components : {
+      posterMessage,
+      Message,
+   },
     data(){
-        return {
-            conversations : this.conversations,
-            message: {
-                text:"",
-            }
-        }
+       return {
+         //  id: this.$route.params.id,
+          conversation: [],
+          messages: []
+       }
     },
-    mounted(){
-        this.$api.get('channels/this.conversation.id/posts', this.message)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            alert(error.response.data.message);
+    mounted() {
+       this.getMessage();
+       console.log(this.$route.params);
+       this.$api
+       .get(`channels/${this.$route.params.id}`)
+       .then((response) => {
+          if(response.data === null ) {
+             //si l'id n'est pas bon, 
+             //on est dirigé vers la page d'accueil (list des conversations)
+             this.$router.push('/');
+             
+          }
+          this.conversation = response.data;
+          this.flashMessage.show({
+            status: "error",
+            title: "Something went wrong :(",
+            message: 'hello world!',
+            time: 5000,
+          });
+
+       })
+       .catch((error) => {
+          this.flashMessage.show({
+            status: "error",
+            title: "Something went wrong :(",
+            message: error.response.data.message,
+          });
         });
+       this.$bus.$on('charger-message', message => {
+          // le paramètre message n'est pas utile, on trouvera le message
+          // allant chercher tous les message dans le current channel
+         //  console.log(message);
+          this.getMessage();
+         // this.message.push(message);
+       });
     },
-    methods : {
-        sendMessage(){
-            this.$api.post(`channels/${this.conversation.id}/posts`, this.message)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                alert(error.response.data.message);
-            });
-        },
-    },
+    methods: {
+       getMessage() {
+          this.$api.get(`channels/${this.$route.params.id}/posts`).then(response => {
+             this.messages = response.data;
+          })
+       }
+    }
 }
 </script>
 
 <style>
-
 </style>
