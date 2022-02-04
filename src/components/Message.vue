@@ -10,7 +10,7 @@
         </div>
         <div class="media-content">
         <p class="title is-4">{{this.$store.state.member.fullname}}</p>
-        <p class="subtitle is-6">@{{this.$store.state.member.email}}</p>
+        <p class="subtitle is-6">{{this.$store.state.member.email}}</p>
         </div>
     </div>
 

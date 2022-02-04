@@ -4,10 +4,12 @@
     <section class="section">
       <h4 class="title is-4 has-text-centered">Détails de la conversation</h4>
       <div class="box" v-if="conversation">
-        <p>
-          <b>{{ conversation.topic }}</b>
-        </p>
-        <p>{{ conversation.label }}</p>
+         <p>
+            Topic : <b>{{ conversation.topic }}</b>
+         </p>
+         <p>
+            Label : <b>{{ conversation.label }}</b>
+         </p>
         <br />
 
         <div class="field is-grouped">
