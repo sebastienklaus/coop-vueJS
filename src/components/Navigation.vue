@@ -24,7 +24,7 @@
       </p>
       <div class="navbar-item">
         <div class="buttons">
-          <a @click="deconnexion()" class="button is-primary">
+          <a @click="deconnexion()" class="button is-info">
             <strong>Déconnexion</strong>
           </a>
         </div>
