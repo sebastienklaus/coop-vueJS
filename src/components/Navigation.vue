@@ -8,21 +8,24 @@
       </a>
 
       <a class="navbar-item">
+        <router-link to="/membres">Liste des membres</router-link>
+      </a>
+
+
+      <a class="navbar-item">
         <router-link to="creer-conversation">Créer une conversation</router-link>
       </a>
-      <p class="navbar-item">
-        <span>Connecté en tant que <b>{{$store.state.member.fullname}}</b></span>
-      </p>
+      
     </div>
 
     <div class="navbar-end">
+      <p class="navbar-item">
+        <span>Connecté en tant que <b>{{$store.state.member.fullname}}</b></span>
+      </p>
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
+          <a @click="deconnexion()" class="button is-primary">
+            <strong>Déconnexion</strong>
           </a>
         </div>
       </div>
@@ -33,6 +36,26 @@
 
 <script>
 export default {
+
+  methods: {
+    deconnexion(){
+        // let donnees = {
+        //     email : this.email,
+        //     password : this.password,
+        // };
+        setTimeout(this.$api.delete('members/signout')
+        .then(() => {
+          alert('Vous êtes déconnecté. Veuillez saisir vos identifiants.')
+            this.$store.commit("setToken", null);
+            this.$store.commit("setMember", false);
+            this.$router.push("/connexion");
+        })
+        .catch((error) => {
+            alert(error.response.data.message);
+        }), 1000);
+        
+    },
+  }
 
 }
 </script>

@@ -1,7 +1,10 @@
 <template>
+<div>
+  <Navigation />
+
   <div id="form-create" class="box">
-    <a><router-link class="button is-text" to="/"> &#8592; Retour à la liste des conversations</router-link></a>
-    <h1>Creation d'une converation</h1>
+  <h4 class="title is-4 has-text-centered">Création d'une conversation</h4>
+
     <form @submit.prevent="validation">
       <div class="field">
       <label class="label">Label</label>
@@ -20,6 +23,8 @@
     </form>
 
   </div>
+</div>
+  
 </template>
 <script>
 export default {
