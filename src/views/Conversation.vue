@@ -2,7 +2,7 @@
   <div>
     <Header />
     <section class="section">
-      <h4 class="title is-4 has-text-centered">Détail de conversation</h4>
+      <h4 class="title is-4 has-text-centered">Détails de la conversation</h4>
       <div class="box" v-if="conversation">
         <p>
           <b>{{ conversation.topic }}</b>
@@ -23,6 +23,9 @@
           </div>
         </div>
       </div>
+
+      <h4 class="title is-4 has-text-centered">Liste des messages</h4>
+
       <posterMessage :conversation="conversation" />
       <div v-for="message in messages" :key="message.id">
         <Message :message="message" />
