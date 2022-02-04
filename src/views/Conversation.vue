@@ -75,7 +75,6 @@ export default {
       // allant chercher tous les message dans le current channel
       //  console.log(message);
       this.getMessage();
-      // this.message.push(message);
     });
   },
   methods: {

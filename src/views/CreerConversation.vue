@@ -40,7 +40,6 @@ export default {
     validation(){
         this.$api.post('channels', this.conversation)
         .then((response) => {
-            console.log(response.data);
             this.$router.push('/');
         })
         .catch((error) => {
