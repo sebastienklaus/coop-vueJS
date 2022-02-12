@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <h1 align="center" style="font-size: 2em">Coop app</h1>
+    <h2 align="center" class="title is-2">Coop App</h2>
       <router-view/>
   </section>
 </template>
