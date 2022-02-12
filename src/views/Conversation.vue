@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Navigation />
     <section class="section">
       <h4 class="title is-4 has-text-centered">Détails de la conversation</h4>
       <div class="box" v-if="conversation">
@@ -14,14 +14,7 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link is-light">
-              <router-link to="/">
-                &#8592; Retour à la liste des conversations</router-link
-              >
-            </button>
-          </div>
-          <div class="control">
-            <a @click="removeConversation()" class="button is-dark">Delete</a>
+            <a @click="removeConversation()" class="button is-danger">Supprimer la conversation</a>
           </div>
         </div>
       </div>
