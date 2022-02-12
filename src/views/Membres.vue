@@ -20,7 +20,7 @@
             </div>
 
             <footer class="card-footer">
-                <a href="#" class="card-footer-item" style="pointer-events: none">Edit</a>
+                <a href="#" class="card-footer-item"><router-link :to="'membre/' + membre.id">Voir le profil</router-link></a>
                 <a @click="deleteMember(membre.id)" class="card-footer-item">Delete</a>
             </footer>
         </div>
