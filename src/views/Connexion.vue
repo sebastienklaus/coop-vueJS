@@ -1,19 +1,25 @@
 <template>
   <div id="form-create" class="box">
-    <h1>Connexion</h1>
+    <h3 class="title is-3">Connexion</h3>
     <form @submit.prevent="validation">
 
       <div class="field">
         <label class="label">Email</label>
-        <div class="control">
-          <input class="input" type="email" required v-model="email" placeholder="alexsmith@gmail.com">
+        <div class="control has-icons-left">
+          <input class="input" type="email" required v-model="email" placeholder="john.doe@gmail.com">
+          <span class="icon is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
         </div>
       </div>
 
       <div class="field">
         <label class="label">Password</label>
-        <div class="control">
+        <div class="control has-icons-left">
           <input class="input" type="paswword" required v-model="password" placeholder="**********">
+          <span class="icon is-left">
+            <i class="fas fa-lock"></i>
+          </span>
         </div>
       </div>
 
