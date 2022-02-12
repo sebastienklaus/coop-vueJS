@@ -6,7 +6,7 @@
 
       <h4 class="title is-4 has-text-centered">Liste des membres</h4>
 
-      <div class="card" :key="membre.id" v-for="membre in membres">
+      <div class="card m-4" :key="membre.id" v-for="membre in membres">
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
