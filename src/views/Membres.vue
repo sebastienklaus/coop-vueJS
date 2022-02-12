@@ -67,7 +67,7 @@ export default {
             this.$router.push("/connexion");
           }
           else {
-            alert("L'utilisateur a bien été supprimé");
+            alert('Vous avez supprimez un autre utilisateur 😱')
             this.getMembers();
           }
         })
