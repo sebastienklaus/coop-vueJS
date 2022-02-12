@@ -19,7 +19,7 @@ Vue.prototype.$api = axios.create({
 
 
 Vue.prototype.$api.interceptors.request.use(function (config) {
-  console.log(config);
+  // console.log(config);
   if(store.state.token){
     config.params.token = store.state.token;
   }
