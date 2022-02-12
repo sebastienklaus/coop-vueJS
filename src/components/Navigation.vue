@@ -13,7 +13,7 @@
 
 
       <a class="navbar-item">
-        <router-link to="creer-conversation">Créer une conversation</router-link>
+        <router-link to="/creer-conversation">Créer une conversation</router-link>
       </a>
       
     </div>
