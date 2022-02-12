@@ -20,7 +20,13 @@
 
     <div class="navbar-end">
       <p class="navbar-item">
-        <span>Connecté en tant que <b>{{$store.state.member.fullname}}</b></span>
+        <span>Connecté en tant que 
+          <a href="#">
+            <router-link :to="'membre/' + $store.state.member.id">
+              <b>{{$store.state.member.fullname}}</b>
+            </router-link>
+          </a> 
+        </span>
       </p>
       <div class="navbar-item">
         <div class="buttons">
