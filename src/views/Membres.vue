@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <!-- <Header /> -->
     <Navigation />
     <section class="section">
 
@@ -60,8 +60,16 @@ export default {
       this.$api
         .delete(`members/${id}`)
         .then((response) => {
-          alert("L'utilisateur a bien été supprimé");
-          this.getMembers();
+          if (`${id}` == this.$store.state.member.id) {
+            alert('Vous supprimez actuellement votre propre compte')
+            this.$store.commit("setToken", null);
+            this.$store.commit("setMember", false);
+            this.$router.push("/connexion");
+          }
+          else {
+            alert("L'utilisateur a bien été supprimé");
+            this.getMembers();
+          }
         })
         .catch((error) => {
           alert(error.response.data.message);
