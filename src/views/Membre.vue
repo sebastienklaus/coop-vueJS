@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <Navigation />
+    <section class="section">
+
+
+      <ul>
+        <li v-for="user in getMembers" :key="user.id">{{user.id}}</li>
+      </ul>
+
+      <div class="content" :key="membre.id" v-for="membre in filterUser">
+      <h4 class="title is-4 has-text-centered">Votre profil</h4>
+        <h2 class="is-underlined">{{membre.fullname}}</h2>
+        <p><i class="far fa-clock"></i> Inscris le {{membre.created_at}}</p>
+        <p>
+          <i class="far fa-envelope"></i>
+          <a :href="'mailto:' + membre.email"> {{membre.email}}</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      membres: [],
+      membre: []
+    };
+  },
+  mounted() {
+    this.getMembers();
+  },
+  computed: {
+    filterUser(){
+      return this.membres.filter(member => member.id == `${this.$route.params.id}`)
+    }
+  },
+  methods: {
+    getMembers() {
+      this.$api
+      .get(`members`)
+      .then((response) => {
+        this.membres = response.data;
+      })
+      .catch((error) => {
+        this.flashMessage.show({
+          status: "error",
+          title: "Something went wrong :/",
+          message: error.response.data.message,
+        });
+      });
+    },
+  },
+};
+</script>
+
+
+<style></style>
