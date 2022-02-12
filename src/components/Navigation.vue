@@ -39,10 +39,6 @@ export default {
 
   methods: {
     deconnexion(){
-        // let donnees = {
-        //     email : this.email,
-        //     password : this.password,
-        // };
         setTimeout(this.$api.delete('members/signout')
         .then(() => {
           alert('Vous êtes déconnecté. Veuillez saisir vos identifiants.')
