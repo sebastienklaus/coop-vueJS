@@ -14,6 +14,9 @@
 
         <div class="field is-grouped">
           <div class="control">
+            <a @click="getMessage()" class="button is-info">Rafraîchir la liste des messages</a>
+          </div>
+          <div class="control">
             <a @click="removeConversation()" class="button is-danger">Supprimer la conversation</a>
           </div>
         </div>
@@ -23,7 +26,7 @@
 
       <posterMessage :conversation="conversation" />
       <div v-for="message in messages" :key="message.id">
-        <Message :message="message" />
+        <Message :message="message" :deleteMessage="deleteMessage"/>
       </div>
     </section>
     <FlashMessage></FlashMessage>
@@ -66,9 +69,6 @@ export default {
         });
       });
     this.$bus.$on("charger-message", (message) => {
-      // le paramètre message n'est pas utile, on trouvera le message
-      // allant chercher tous les message dans le current channel
-      //  console.log(message);
       this.getMessage();
     });
   },
@@ -86,6 +86,17 @@ export default {
         .then((response) => {
           alert("Votre conversation a bien été supprimé");
           this.$router.push("/");
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
+        });
+    },
+    deleteMessage(idMessage){
+      this.$api
+        .delete(`channels/${this.$route.params.id}/posts/${idMessage}`)
+        .then((response) => {
+          alert("Ce message a bien été supprimé");
+          this.getMessage();
         })
         .catch((error) => {
           alert(error.response.data.message);
