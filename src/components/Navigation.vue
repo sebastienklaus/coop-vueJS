@@ -33,7 +33,7 @@
           </a>
       </p>
       <div class="navbar-item">
-          <a @click="deconnexion()" class="button is-link is-light">
+          <a id="logOutButton" @click="deconnexion()" class="button is-link is-light">
             <span class="icon">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </span>
@@ -50,16 +50,20 @@ export default {
 
   methods: {
     deconnexion(){
-        setTimeout(this.$api.delete('members/signout')
-        .then(() => {
-          alert('Vous êtes déconnecté. Veuillez saisir vos identifiants.')
-            this.$store.commit("setToken", null);
-            this.$store.commit("setMember", false);
-            this.$router.push("/connexion");
-        })
-        .catch((error) => {
-            alert(error.response.data.message);
-        }), 1000);
+      let button_log_out = document.getElementById('logOutButton');
+      button_log_out.classList.add('is-loading');
+      button_log_out.classList.remove('is-light');
+
+      setTimeout(this.$api.delete('members/signout')
+      .then(() => {
+        alert('Vous êtes déconnecté. Veuillez saisir vos identifiants.')
+          this.$store.commit("setToken", null);
+          this.$store.commit("setMember", false);
+          this.$router.push("/connexion");
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      }), 1000);
         
     },
   }
