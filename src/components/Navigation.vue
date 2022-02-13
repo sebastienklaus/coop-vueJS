@@ -13,7 +13,12 @@
 
 
       <a class="navbar-item">
-        <router-link to="/creer-conversation">Créer une conversation</router-link>
+        <div class="button is-info">
+          <span class="icon">
+            <i class="fas fa-circle-plus"></i>
+          </span>
+          <router-link class="has-text-white" to="/creer-conversation">Créer une conversation</router-link>
+        </div>
       </a>
       
     </div>
@@ -31,6 +36,9 @@
       <div class="navbar-item">
         <div class="buttons">
           <a @click="deconnexion()" class="button is-info">
+            <span class="icon">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </span>
             <strong>Déconnexion</strong>
           </a>
         </div>
