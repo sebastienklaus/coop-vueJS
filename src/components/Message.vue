@@ -17,7 +17,7 @@
             </div>
         </div>
         <footer class="card-footer">
-            <a href="#" class="card-footer-item">
+            <a class="card-footer-item">
                 <span class="icon">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
@@ -34,7 +34,11 @@
 </template>
 
 <script>
+
 export default {
+
     props: ['message', 'deleteMessage'],
 }
+
+
 </script>
