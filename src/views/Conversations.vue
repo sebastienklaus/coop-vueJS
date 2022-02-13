@@ -1,8 +1,8 @@
 <template>
   <section>
     <Navigation />
-    <div class="m-3" v-for="item in conversations" :key="item.id">
-      <Conversation :conversation="item" />
+    <div v-for="item in conversations" :key="item.id">
+      <Conversation class="m-3" :conversation="item" />
     </div>
   </section>
 </template>
