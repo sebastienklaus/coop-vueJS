@@ -16,7 +16,7 @@
       <div class="field">
         <label class="label">Password</label>
         <div class="control has-icons-left">
-          <input class="input" type="paswword" required v-model="password" placeholder="**********">
+          <input class="input" type="password" required v-model="password" placeholder="**********">
           <span class="icon is-left">
             <i class="fas fa-lock"></i>
           </span>
