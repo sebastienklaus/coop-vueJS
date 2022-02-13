@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <section>
     <Navigation />
     <div class="m-3" v-for="item in conversations" :key="item.id">
       <Conversation :conversation="item" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
