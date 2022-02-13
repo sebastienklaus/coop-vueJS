@@ -50,7 +50,6 @@ export default {
   },
   mounted() {
     this.getMessage();
-    console.log(this.$route.params);
     this.$api
       .get(`channels/${this.$route.params.id}`)
       .then((response) => {
