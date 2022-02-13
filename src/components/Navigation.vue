@@ -24,14 +24,13 @@
     </div>
 
     <div class="navbar-end">
-      <p class="navbar-item">
-        <span>Connecté en tant que 
+      <p class="navbar-item"> 
           <a href="#">
+            <i class="fa-solid fa-user mr-1"></i>
             <router-link :to="'membre/' + $store.state.member.id">
               <b>{{$store.state.member.fullname}}</b>
             </router-link>
-          </a> 
-        </span>
+          </a>
       </p>
       <div class="navbar-item">
         <div class="buttons">
