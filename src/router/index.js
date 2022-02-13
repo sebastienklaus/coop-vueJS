@@ -39,7 +39,7 @@ const routes = [
     path: '/membre/:id',
     name: 'Membre',
     component: () => import('../views/Membre.vue')
-  },
+  }
   
 
 ]

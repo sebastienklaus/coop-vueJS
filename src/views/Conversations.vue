@@ -18,14 +18,14 @@ export default {
     };
   },
   mounted(){
-      this.$api
-      .get("channels")
-      .then((response) => {
-        this.conversations = response.data;
-      })
-      .catch((error) => {
-            alert(error.response.data.message);
-        });
+    this.$api
+    .get("channels")
+    .then((response) => {
+      this.conversations = response.data;
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
   },
 }
 </script>

@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-props : ["conversation"],
+props : ['conversation'],
  data(){
         return {
             message : '',
