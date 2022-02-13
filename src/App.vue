@@ -13,7 +13,7 @@ export default {
   mounted() {
     this.$api.get("ping").then();
     if (!this.$store.state.token) {
-      alert('Votre session a expiré. Veuillez saisir vos identifiants pour vous connecter à nouveau')
+      alert('Votre session a expiré. Veuillez saisir vos identifiants pour vous connecter à nouveau.')
       this.$router.push("/connexion");
     } else {
       this.$api(`members/${this.$store.state.member.id}/signedin`)

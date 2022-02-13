@@ -83,7 +83,7 @@ export default {
       this.$api
         .delete(`channels/${this.$route.params.id}`)
         .then((response) => {
-          alert("Votre conversation a bien été supprimé");
+          alert("Cette conversation a bien été supprimé");
           this.$router.push("/");
         })
         .catch((error) => {
@@ -94,7 +94,7 @@ export default {
       this.$api
         .delete(`channels/${this.$route.params.id}/posts/${idMessage}`)
         .then((response) => {
-          alert("Ce message a bien été supprimé");
+          alert("Ce message a bien été supprimé.");
           this.getMessage();
         })
         .catch((error) => {

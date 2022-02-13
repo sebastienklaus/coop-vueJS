@@ -53,7 +53,7 @@ export default {
         password : this.password,
       })
       .then((response) => {
-        alert('Votre compte a bien été crée');
+        alert('Votre compte a bien été crée !');
         this.$router.push('/connexion');
       })
       .catch((error) => {
