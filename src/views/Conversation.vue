@@ -36,6 +36,7 @@
 <script>
 import posterMessage from "../components/posterMessage.vue";
 import Message from "../components/Message.vue";
+
 export default {
   components: {
     posterMessage,
