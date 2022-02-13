@@ -12,12 +12,12 @@
                     <p class="subtitle is-6">{{this.$store.state.member.email}}</p>
                 </div>
             </div>
-            <div class="content">
-                {{ message.message }}
+            <div class="content" :data-id-message="message.id">
+               <p>{{ message.message }}</p>
             </div>
         </div>
         <footer class="card-footer">
-            <a class="card-footer-item">
+            <a class="card-footer-item" disabled>
                 <span class="icon">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
