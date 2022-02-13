@@ -12,6 +12,7 @@ export default new Vuex.Store({
   state: {
     token : '',
     member : false,
+    ready : false,
   },
   mutations: {
     setToken(state, token){
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setMember(state, member){
       state.member = member
+    },
+    setReady(state, ready) {
+      state.ready = ready
     },
   },
   actions: {
