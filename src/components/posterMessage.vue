@@ -6,7 +6,7 @@
           </div>
       </div>
       <div class="buttons">
-          <button class="button"> Poster un message </button>
+          <button class="button is-link"> Poster un message </button>
       </div>
     </form>                                                    
 </template>
