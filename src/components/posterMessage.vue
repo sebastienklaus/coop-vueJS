@@ -27,6 +27,7 @@ props : ["conversation"],
                     // console.log(response.data);
                     this.$bus.$emit('charger-message', response.data)
                 })
+                this.message = ''
             }
         }
 }
