@@ -19,7 +19,7 @@
         <input class="input" type="text" required v-model="conversation.topic" placeholder="Dev. Web Client">
       </div>
     </div>
-      <button class="button">Valider</button>
+      <button class="button is-link">Valider</button>
     </form>
 
   </div>
