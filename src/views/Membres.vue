@@ -20,8 +20,20 @@
             </div>
 
             <footer class="card-footer">
-                <a href="#" class="card-footer-item"><router-link :to="'membre/' + membre.id">Voir le profil</router-link></a>
-                <a @click="deleteMember(membre.id)" class="card-footer-item">Delete</a>
+                <a href="#" class="card-footer-item">
+                  <router-link :to="'membre/' + membre.id">
+                  <span class="icon">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+                Voir le profil
+                  </router-link>
+                </a>
+                <a @click="deleteMember(membre.id)" class="card-footer-item has-text-danger">
+                <span class="icon">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+                Supprimer le compte
+            </a>
             </footer>
         </div>
       </div>
@@ -57,23 +69,21 @@ export default {
       });
     },
     deleteMember(id) {
-      this.$api
+      if (`${id}` !== this.$store.state.member.id) {
+        alert('Vous ne pouvez pas supprimer ce compte 😕.');
+      } else {
+        this.$api
         .delete(`members/${id}`)
         .then((response) => {
-          if (`${id}` == this.$store.state.member.id) {
-            alert('Vous supprimez actuellement votre propre compte')
-            this.$store.commit("setToken", null);
-            this.$store.commit("setMember", false);
-            this.$router.push("/connexion");
-          }
-          else {
-            alert('Vous avez supprimez un autre utilisateur 😱')
-            this.getMembers();
-          }
+          this.$store.commit("setToken", null);
+          this.$store.commit("setMember", false);
+          this.$router.push("/connexion");
+          alert('Votre compte a bien été supprimé.');
         })
         .catch((error) => {
           alert(error.response.data.message);
         });
+      }
     },
   },
 };
