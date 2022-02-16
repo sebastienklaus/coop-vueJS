@@ -56,7 +56,6 @@ export default {
 
       setTimeout(this.$api.delete('members/signout')
       .then(() => {
-        alert('Vous êtes déconnecté. Veuillez saisir vos identifiants.')
           this.$store.commit("setToken", null);
           this.$store.commit("setMember", false);
           this.$router.push("/connexion");
