@@ -8,8 +8,12 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4">{{this.$store.state.member.fullname}}</p>
-                    <p class="subtitle is-6">{{this.$store.state.member.email}}</p>
+                    <p class="title is-4">
+                        <router-link :to="'/membre/' + member.id">
+                            {{ member.fullname }}
+                        </router-link>
+                    </p>
+                    <p class="subtitle is-6">{{ member.email }}</p>
                 </div>
             </div>
             <div class="content" :data-id-message="message.id">
@@ -34,10 +38,23 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 
 export default {
 
     props: ['message', 'deleteMessage'],
+    data() {
+        return {
+            member: false
+        }
+    },
+    computed: {
+        ...mapGetters(["getMember"]),
+    },
+    mounted() {
+        this.member = this.getMember(this.message.member_id);
+    },
+    
 }
 
 

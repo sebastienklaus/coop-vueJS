@@ -28,7 +28,7 @@ export default {
     },
     demarrer() {
       this.$api.get("members").then((response) => {
-        this.$store.commit("setMember", response.data);
+        this.$store.commit("setMembers", response.data);
         this.ready();
       });
     },

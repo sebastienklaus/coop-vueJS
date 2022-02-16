@@ -59,6 +59,7 @@ export default {
       .get(`members`)
       .then((response) => {
         this.membres = response.data;
+        this.$store.commit("setMembers", response.data)
       })
       .catch((error) => {
         this.flashMessage.show({
