@@ -27,7 +27,7 @@
                 </span>
                 Modifier le message
             </a>
-            <a @click="deleteMessage(message.id)" class="card-footer-item has-text-danger">
+            <a @click="deleteMessage(message.id, member.id)" class="card-footer-item has-text-danger">
                 <span class="icon">
                     <i class="fa-solid fa-trash"></i>
                 </span>
