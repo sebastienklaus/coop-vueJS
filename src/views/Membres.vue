@@ -10,9 +10,7 @@
         <div class="card-content">
             <div class="media">
               <div class="media-left">
-                <figure class="image is-48x48">
-                  <vue-letter-avatar :name='membre.fullname' size='50' :rounded=true />
-                </figure>
+                <vue-letter-avatar :name='membre.fullname' size='50' :rounded=true />
               </div>
               <div class="media-content">
                 <p class="title is-4">{{membre.fullname}}</p>
