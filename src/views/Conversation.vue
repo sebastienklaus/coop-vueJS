@@ -90,16 +90,25 @@ export default {
           alert(error.response.data.message);
         });
     },
-    deleteMessage(idMessage){
-      this.$api
-        .delete(`channels/${this.$route.params.id}/posts/${idMessage}`)
-        .then((response) => {
-          alert("Ce message a bien été supprimé.");
-          this.getMessage();
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
+    deleteMessage(idMessage, idMember){
+      if (`${idMember}` !== this.$store.state.member.id) {
+        this.flashMessage.show({
+          status: "error",
+          title: "Impossible de supprimer ce message",
+          message: "Désolé, seul l'auteur de ce message peut le supprimer 😕.",
         });
+      }
+      else {
+        this.$api
+          .delete(`channels/${this.$route.params.id}/posts/${idMessage}`)
+          .then((response) => {
+            alert("Ce message a bien été supprimé.");
+            this.getMessage();
+          })
+          .catch((error) => {
+            alert(error.response.data.message);
+          });
+      }
     },
   },
 };
