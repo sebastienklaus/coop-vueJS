@@ -32,6 +32,7 @@
         </div>
       </div>
     </form>
+  <FlashMessage></FlashMessage>
   </div>
 </template>
 
