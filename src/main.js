@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import FlashMessage from '@smartweb/vue-flash-message';
+import VueLetterAvatar from 'vue-letter-avatar';
+
+Vue.use(VueLetterAvatar);
 
 Vue.use(FlashMessage);
 
