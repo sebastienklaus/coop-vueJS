@@ -59,6 +59,11 @@ export default {
           this.$store.commit("setToken", null);
           this.$store.commit("setMember", false);
           this.$router.push("/connexion");
+          this.flashMessage.show({
+            status: "success",
+            title: "Déconnexion",
+            message: "Vous êtes déconnecté. Veuillez saisir vos identifiants pour ouvrir une nouvelle session.",
+          });
       })
       .catch((error) => {
         alert(error.response.data.message);
