@@ -76,7 +76,6 @@ export default {
     },
     deleteMember(id) {
       if (`${id}` !== this.$store.state.member.id) {
-        alert('Vous ne pouvez pas supprimer ce compte 😕.');
         this.flashMessage.show({
           status: "error",
           title: "Impossible de supprimer ce compte",
@@ -89,7 +88,11 @@ export default {
           this.$store.commit("setToken", null);
           this.$store.commit("setMember", false);
           this.$router.push("/connexion");
-          alert('Votre compte a bien été supprimé.');
+          this.flashMessage.show({
+            status: "success",
+            title: "Suppression du compte réussi",
+            message: "Votre compte a bien été supprimé.",
+          });
         })
         .catch((error) => {
           alert(error.response.data.message);
