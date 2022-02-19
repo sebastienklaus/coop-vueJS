@@ -77,6 +77,11 @@ export default {
     deleteMember(id) {
       if (`${id}` !== this.$store.state.member.id) {
         alert('Vous ne pouvez pas supprimer ce compte 😕.');
+        this.flashMessage.show({
+          status: "error",
+          title: "Impossible de supprimer ce compte",
+          message: "Désolé, ce compte peut être supprimé uniquement par son propriétaire 😕.",
+        });
       } else {
         this.$api
         .delete(`members/${id}`)
